@@ -270,7 +270,23 @@
     </div>
 
     <script>
-        screen.orientation.lock('landscape')
+        if (screen.orientation.lock) {
+
+  screen.orientation.lock("landscape").then(() => {
+
+    console.log("Screen locked to landscape mode");
+
+  }).catch(error => {
+
+    console.error("Failed to lock orientation:", error);
+
+  });
+
+} else {
+
+  console.warn("Screen orientation locking not supported on this device");
+
+        }
         // Canvas elements
         const starCanvas = document.getElementById('starCanvas');
         const starCtx = starCanvas.getContext('2d');
